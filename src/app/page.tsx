@@ -115,13 +115,16 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        { error ? (<div>{error}</div>) : null}
+        
+        <div className="text-xl font-bold">Paste or write your text here</div>
         <textarea 
           id="text"
-          className="border-1 border-grey-100 min-w-full"
+          className="border-1 border-grey-100 min-w-full h-100 p-2 outline-none"
           onChange={(e) => {setFormText(e.target.value)}}
         ></textarea>
         <button 
-          className="bg-blue-500 p-4 text-white cursor-pointer"
+          className="bg-blue-500 p-2 text-white cursor-pointer"
           onClick={(e) => {e.preventDefault();handleProcessClick(formText);}}
         >Process</button>
         {words.length > 0 && (
